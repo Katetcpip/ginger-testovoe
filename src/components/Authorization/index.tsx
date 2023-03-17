@@ -25,7 +25,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles : Function = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -37,26 +37,26 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
+  }
 }));
 
-function Authorization() {
+function Authorization() : JSX.Element {
 
-  const handleClick = e => {
+  const handleClick = (e :  React.MouseEvent<HTMLButtonElement, MouseEvent>) : void => {
     e.preventDefault();
-    const item ={
+    const item : object = {
       username,
       password
     }
     sendFetch(item);
   }
   const navigate = useNavigate();
-  function sendFetch(item){
+  function sendFetch(item : object){
      axios.post('https://test.v5.pryaniky.com/ru/data/v3/testmethods/docs/login', item).then((response) => {
       if (response.data.data == null){
         alert("Your password is wrong! Try one more time");
